@@ -1,5 +1,6 @@
 var WaveSurfer = require("./vendor/wavesurfer.js");
 import Helpers from "./helpers/Helpers.js";
+import Debug from "./helpers/Debug.js";
 import DateAndTimeHelpers from "./helpers/DateAndTimeHelpers.js";
 var config = {
   color_primary: "#d9d9d9",
@@ -29,16 +30,23 @@ var config = {
     e.preventDefault();
 
     var trackArrayID = String($(this).data("playlist"));
+    fetchData(trackArrayID);
+  });
 
-    var trackArray = eval(trackArrayID);
+  function fetchData(arrayID) {
+    if (arrayID.length < 2) {
+      Debug.notify("warning", "trackArrayID empty!!");
+      return;
+    }
+    var trackArray = eval(arrayID);
 
     if (JSON.parse(trackArray.tracks)[0].length > 2) {
-        //  console.log(trackArray);
-        //if is not empty
-        queuePlaylist(trackArray);
-        playlistPreview(trackArray);
+      //  console.log(trackArray);
+      //if is not empty
+      queuePlaylist(trackArray);
+      playlistPreview(trackArray);
     }
-  });
+  }
 
   function playlistPreview(trackO) {
     var trackObject = trackO;
@@ -48,14 +56,14 @@ var config = {
     var trackTitle = JSON.parse(trackObject["prodTitle"]);
     var trackLink = JSON.parse(trackObject.plink);
 
-    console.log("track",trackThumbUrl)
+    console.log("track", trackThumbUrl);
     $(".prodLink").attr("href", trackLink);
     //   $(".album_preview").ajaxify();
     $(".prodTitle").text(trackTitle);
     $(".prodThumb").css("background-image", "url(" + trackThumbUrl + ")");
-}
+  }
 
-function queuePlaylist(trackO) {
+  function queuePlaylist(trackO) {
     //    console.log("trackO: ", trackO);
 
     var trackObject = trackO;
@@ -90,11 +98,10 @@ function queuePlaylist(trackO) {
       //     console.log(index, el);
       playlistDiv.append(listhtml);
     });
-    
+
     $(".playlist_item").first().addClass("current");
     //load the first track
     loadTrack(trackArray[0]);
-
 
     //reset event listeners
     $(".playlist_item").on("click", function () {
@@ -137,9 +144,16 @@ function queuePlaylist(trackO) {
     btn_volume.on("click", function () {
       wavesurfer.toggleMute();
     });
-    $(".open_btn").on("click", function () {
-      showhidePlayer();
-    });
+    $(".window-controls")
+      .find(".open_btn")
+      .on("click", function () {
+        showhidePlayer();
+      });
+    $(".playlist_UI")
+      .find(".open_btn")
+      .on("click", function () {
+        showhidePlayList($(this));
+      });
 
     /**
      * events
@@ -302,7 +316,18 @@ function queuePlaylist(trackO) {
     }
   }
   function showhidePlayer() {
+    var btn_el = $(".window-controls").find($(".open_btn"));
+    if ($(".playlist_UI").hasClass("expand")) showhidePlayList();
     Helpers.swapClasses($sikPlayer, "closed");
-    Helpers.swapClasses($(".open_btn"), "closed");
+    Helpers.swapClasses(btn_el, "closed");
+  }
+  function showhidePlayList() {
+    var playList_el = $(".playlist_UI");
+    var preview_el = $(".album_preview");
+    var btn_el = playList_el.find($(".open_btn"));
+
+    Helpers.swapClasses(playList_el, "expand");
+    Helpers.swapClasses(preview_el, "contracted");
+    Helpers.swapClasses(btn_el, "closed");
   }
 })(jQuery);

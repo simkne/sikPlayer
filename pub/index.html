@@ -38,13 +38,25 @@
             <a href="#" class="prodLink ajaxme" title="view product details">
               <div class="prodThumb"></div>
               <div class="prodTitle">Painted Pictures & Malik Alston Trio</div>
-              <!-- <div class="prodLinks">details</div> -->
             </a>
+            <div class="prodLinks">
+              <div class="mask">
+                <a
+                  href="#"
+                  class="prodLink ajaxme"
+                  title="view product details"
+                >
+                  <span class="details">details</span>
+                </a>
+                <!--     <div class="favLink">hottt!</div>
+                <div class="buyLink">buy</div> -->
+              </div>
+            </div>
           </div>
           <div class="player_UI">
             <div class="controls">
               <div class="playpause">play</div>
-             <!--  <div class="volume on">vol</div> -->
+              <!--  <div class="volume on">vol</div> -->
               <!--     <div class="volbox">
                       <input id="volume" type="range" min="0" max="1" value=".8" step="0.1">
                   </div> -->
@@ -54,9 +66,8 @@
             </div>
             <div id="sikPlayer_loading" class="sikPlayer_loader hide"></div>
             <div id="timeTracker" class="timeTracker">
-              <span class="currentTime"></span> / <span
-                class="totalLength"
-              ></span>
+              <span class="currentTime"></span> /
+              <span class="totalLength"></span>
             </div>
             <!--   <div class="audioPlayer">
               <audio src="https://assets.codepen.io/4358584/Anitek_-_Carry_On.mp3" controls loop></audio>
@@ -64,7 +75,7 @@
           </div>
           <div class="playlist_UI">
             <!--             <div class="container"> -->
-            <!--    <span class="playlist_openClose-btn">+</span> -->
+            <span class="open_btn closed">+</span>
 
             <ul class="playlist">
               <li data-trackurl="#" class="playlist_item">track1 track1</li>

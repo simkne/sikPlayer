@@ -36,12 +36,12 @@
     left: 1rem;
     padding: 2px;
     //   background: $color_bg;
-    & .open_btn {
-      @include iconBtn("nav-arrow-down");
-      &.closed {
-        background-image: url("../../pub/assets/img/nav-arrow-up.svg");
-        // @include iconLink("nav-arrow-down");
-      }
+  }
+  & .open_btn {
+    @include iconBtn("nav-arrow-down");
+    &.closed {
+      background-image: url("../../pub/assets/img/nav-arrow-up.svg");
+      // @include iconLink("nav-arrow-down");
     }
   }
   & .container {
@@ -65,6 +65,15 @@
       & .msg {
         pointer-events: none;
         width: fit-content;
+        background-image: url("../../pub/assets/img/simoebius.svg");
+        pointer-events: none;
+        width: 80%;
+        text-align: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 10% 0px;
+        /* color: #d1d1d1; */
+        line-height: 28px;
       }
     }
 
@@ -72,6 +81,7 @@
       width: 100%;
       height: 120px;
       position: relative;
+      @include sik_trans(height);
 
       & .prodThumb {
         width: 100%;
@@ -81,13 +91,10 @@
         background-image: url("../../pub/assets/img/cover_default.png");
         background-size: 100%;
         background-position: top center;
-        @include sik_trans("background-size");
-        animation: panin 1s  cubic-bezier(.59,.09,.28,1.07);
-        animation-fill-mode: forwards;
-        
-        
+        background-blend-mode: unset;
+        background-color: $color_theme_bg;
+        @include sik_trans(all);
       }
-
 
       & .prodTitle {
         position: absolute;
@@ -104,28 +111,83 @@
         );
         padding-left: 7px;
         @include sik_trans(background-color);
-        text-wrap: nowrap
+        text-wrap: nowrap;
         @include truncateText();
+      }
+
+      & .prodLinks {
+        position: absolute;
+        right: 0;
+        margin-top: auto;
+        width: 32px;
+        height: fit-content;
+        top: 50%;
+        z-index: 4;
+
+        overflow: hidden;
+        & .mask {
+          margin-left: 3rem;
+          width: 100%;
+          height: 100%;
+          background: $color_theme_bg;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+          @include sik_trans(margin-left);
+          padding: 5px;
+        }
+        & .prodLink {
+          @include iconBtn("info-empty");
+
+          background-color: transparent;
+        }
+        & .favLink {
+          @include iconBtn("fire-flame");
+          background-color: transparent;
+        }
+        & .buyLink {
+          @include iconBtn("cart");
+          background-color: transparent;
+        }
+      }
+
+      &.contracted {
+        height: 55px;
+        & .prodThumb {
+          height: 200%;
+          background-position: center 10%;
+          background-blend-mode: overlay;
+        }
       }
 
       &:hover {
         & .prodThumb {
-            animation: panout 1.5s  cubic-bezier(.59,.09,.28,1.07);
-            animation-fill-mode: forwards;
+          //  animation: panout 2.5s  cubic-bezier(.59,.09,.28,1.07);
+          animation-fill-mode: forwards;
           //  background-size: 120%;
         }
         & .prodTitle {
           background-color: #1717175c;
           background-blend-mode: darken;
         }
+        & .prodLinks .mask {
+          margin-left: 0;
+        }
       }
       @keyframes panout {
-        0% {background-size: 100%;}
-        100% {background-size: 110%;}
+        0% {
+          background-size: 100%;
+        }
+        100% {
+          background-size: 104%;
+        }
       }
       @keyframes panin {
-        0% {background-size: 110%;}
-        100% {background-size: 100%;}
+        0% {
+          background-size: 104%;
+        }
+        100% {
+          background-size: 100%;
+        }
       }
     }
 
@@ -133,12 +195,12 @@
       position: relative;
       background-color: $color_theme_bg;
       background: linear-gradient(
-          180deg,
-          rgba(34, 144, 195, 0) 0%,
-          rgb(9 36 48 / 89%) 76%,
-          #171717 100%
-        );
-        & .controls {
+        180deg,
+        rgba(34, 144, 195, 0) 0%,
+        rgb(9 36 48 / 89%) 76%,
+        #171717 100%
+      );
+      & .controls {
         height: 60px;
         width: fit-content;
         display: flex;
@@ -212,10 +274,21 @@
 
     & .playlist_UI {
       border: 1px solid #171717;
-      position: relative;
-      height: 60px;
+      position: fixed;
+      bottom: 0;
+      height: 56px;
       padding-bottom: 3px;
       overflow-y: scroll;
+      @include sik_trans(height);
+      width: 100%;
+      z-index: 10;
+      &.expand {
+        height: 56%;
+      }
+      & .open_btn {
+        position: fixed;
+        right: 0;
+      }
 
       & .playlist {
         list-style: none;

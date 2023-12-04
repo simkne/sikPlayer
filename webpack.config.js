@@ -43,10 +43,18 @@ module.exports = [
         },
         // loader for images and icons (only required if css references image files)
         {
-          test: /\.(png|jpg|gif|svg)$/,
+          test: /\.(png|jpg|gif)$/,
           type: 'asset/resource',
           generator: {
             filename: './pub/assets/img/[name][ext]',
+          }
+        },
+        // loader for images and icons (only required if css references image files)
+        {
+          test: /\.(svg)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: './pub/assets/img/icons/[name][ext]',
           }
         },
       ]
@@ -56,7 +64,9 @@ module.exports = [
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [
           './pub/js/*',  //only the main file, keep vendor files
-          './pub/css/*'
+          './pub/css/*',
+          './pub/img/*',
+          './pub/img/icons/*'
         ]
       }),
       // css extraction into dedicated file
