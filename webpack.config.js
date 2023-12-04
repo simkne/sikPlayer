@@ -43,12 +43,17 @@ module.exports = [
         },
         // loader for images and icons (only required if css references image files)
         {
+<<<<<<< HEAD
           test: /\.(png|jpg|gif)$/,
+=======
+          test: /\.(png|jpg|gif|svg)$/,
+>>>>>>> 10ac8f5806e334d9bf3423d8fd397976c6a4d8d8
           type: 'asset/resource',
           generator: {
             filename: './pub/assets/img/[name][ext]',
           }
         },
+<<<<<<< HEAD
         // loader for images and icons (only required if css references image files)
         {
           test: /\.(svg)$/,
@@ -57,6 +62,8 @@ module.exports = [
             filename: './pub/assets/img/icons/[name][ext]',
           }
         },
+=======
+>>>>>>> 10ac8f5806e334d9bf3423d8fd397976c6a4d8d8
       ]
     },
     plugins: [
@@ -64,9 +71,13 @@ module.exports = [
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [
           './pub/js/*',  //only the main file, keep vendor files
+<<<<<<< HEAD
           './pub/css/*',
           './pub/img/*',
           './pub/img/icons/*'
+=======
+          './pub/css/*'
+>>>>>>> 10ac8f5806e334d9bf3423d8fd397976c6a4d8d8
         ]
       }),
       // css extraction into dedicated file
