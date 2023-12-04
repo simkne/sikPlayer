@@ -1,0 +1,60 @@
+//@import "~@wordpress/base-styles/breakpoints";
+//@import "~@wordpress/base-styles/mixins";
+
+$portrait: "orientation: portrait";
+$landscape: "orientation: landscape";
+$retina: "min-resolution: 192dpi";
+
+
+$breakpoint-mobile-only: 420px;
+$breakpoint-small: 600px;
+$breakpoint-med-small: 960px;
+$breakpoint-med: 1175px;
+
+/** 
+usage:  	
+ @include screen(large, min) {
+ @include screen(custom, max, 400) {
+*/
+
+@mixin screen($size, $type: max, $pixels: $breakpoint-small) {
+
+	@if $type=='max' {
+		$type : 'max-width';
+	} @else if $type=='min'  {
+		$type : 'min-width';
+	}
+	@if $size=='small' {
+		@media screen and ($type: $breakpoint-small) {
+			@content;
+		}
+	}
+
+	@else if $size=='med-small' {
+		@media screen and ($type: $breakpoint-med-small) {
+			@content;
+		}
+	}
+
+	@else if $size=='med' {
+		@media screen and ($type: $breakpoint-med) {
+			@content;
+		}
+	}
+
+	@else if $size=='large' {
+		@media screen and ($type: $breakpoint-med) {
+			@content;
+		}
+	}
+
+	@else if $size=='custom' {
+		@media screen and ($type: $pixels + 'px') {
+			@content;
+		}
+	}
+
+	@else {
+		@content;
+	}
+}
