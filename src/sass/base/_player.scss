@@ -1,0 +1,250 @@
+.sikPlayer_wrapper {
+  width: $width_max;
+  height: $height_init;
+  background: $color_bg;
+  border: 3px solid $color_theme_bg;
+  border-radius: $border_radius;
+  position: fixed;
+  bottom: 0.5rem;
+  color: $color_fg;
+  filter: drop-shadow(0px -10px 14px rgba(68, 160, 221, 0.206));
+  @include sik_trans();
+  &.slim {
+    width: $width_med;
+    height: $height_init;
+  }
+  &.closed {
+    bottom: -($height_init + 5);
+
+    &.paused,
+    &.playing {
+      & .controls .playpause {
+        position: absolute;
+        top: -150px;
+        left: 3rem;
+        visibility: visible;
+        z-index: 7;
+        background-color: #171717 !important;
+        width: 24px !important;
+        height: 24px !important;
+      }
+    }
+  }
+  & .window-controls {
+    position: absolute;
+    top: -2rem;
+    left: 1rem;
+    padding: 2px;
+    //   background: $color_bg;
+    & .open_btn {
+      @include iconBtn("nav-arrow-down");
+      &.closed {
+        background-image: url("../../pub/assets/img/nav-arrow-up.svg");
+        // @include iconLink("nav-arrow-down");
+      }
+    }
+  }
+  & .container {
+    background: $color_bg;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    //overflow: hidden;
+    border-radius: $border_radius;
+    & .preloader {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 99;
+      background: #00212b9e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: $border_radius;
+      backdrop-filter: blur(10px);
+      & .msg {
+        pointer-events: none;
+        width: fit-content;
+      }
+    }
+
+    & .album_preview {
+      width: 100%;
+      height: 120px;
+      position: relative;
+
+      & .prodThumb {
+        width: 100%;
+        height: 150%;
+        position: absolute;
+        z-index: 0;
+        background-image: url("../../pub/assets/img/cover_default.png");
+        background-size: 100%;
+        background-position: top center;
+        @include sik_trans("background-size");
+        animation: panin 1s  cubic-bezier(.59,.09,.28,1.07);
+        animation-fill-mode: forwards;
+        
+        
+      }
+
+
+      & .prodTitle {
+        position: absolute;
+        width: 98%;
+        top: 0;
+        font-size: 1.1rem;
+        color: $color_fg;
+        background-color: #171717b9;
+        background: linear-gradient(
+          0deg,
+          rgba(34, 144, 195, 0) 0%,
+          rgba(2, 46, 66, 0.9) 46%,
+          rgb(0, 33, 43) 100%
+        );
+        padding-left: 7px;
+        @include sik_trans(background-color);
+        text-wrap: nowrap
+        @include truncateText();
+      }
+
+      &:hover {
+        & .prodThumb {
+            animation: panout 1.5s  cubic-bezier(.59,.09,.28,1.07);
+            animation-fill-mode: forwards;
+          //  background-size: 120%;
+        }
+        & .prodTitle {
+          background-color: #1717175c;
+          background-blend-mode: darken;
+        }
+      }
+      @keyframes panout {
+        0% {background-size: 100%;}
+        100% {background-size: 110%;}
+      }
+      @keyframes panin {
+        0% {background-size: 110%;}
+        100% {background-size: 100%;}
+      }
+    }
+
+    & .player_UI {
+      position: relative;
+      background-color: $color_theme_bg;
+      background: linear-gradient(
+          180deg,
+          rgba(34, 144, 195, 0) 0%,
+          rgb(9 36 48 / 89%) 76%,
+          #171717 100%
+        );
+        & .controls {
+        height: 60px;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: absolute;
+        z-index: 9;
+
+        & .playpause {
+          @include iconBtn("play");
+          background-color: transparent;
+          width: 36px;
+          height: 36px;
+          background-size: 87%;
+          &.pause {
+            background-image: url("../../pub/assets/img/icons/pause.svg");
+          }
+        }
+        & .volume {
+          @include iconBtn("sound-high");
+          //    background-color: transparent;
+          background-size: 84%;
+          &.mute,
+          &.off {
+            background-image: url("../../pub/assets/img/icons/sound-off.svg");
+          }
+        }
+      }
+
+      & .waveForm_wrapper {
+        height: 60px;
+
+        width: 87%;
+        margin-left: 2.2rem;
+        & #waveform {
+          height: 100%;
+          padding-top: 8px;
+          & wave {
+            cursor: ew-resize !important;
+          }
+        }
+      }
+
+      & .sikPlayer_loader {
+        font-size: 38px;
+        color: $color_fg;
+        font-weight: 800;
+        width: 75px;
+        height: 50px;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top: 4px;
+        left: 42%;
+        z-index: 3;
+        opacity: 1;
+        transform: scale(1);
+        @include sik_trans();
+      }
+      & .timeTracker {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 0.7rem;
+        line-height: 0.9rem;
+        opacity: 0.8;
+        color: $color_tertiary;
+        pointer-events: none;
+      }
+    }
+
+    & .playlist_UI {
+      border: 1px solid #171717;
+      position: relative;
+      height: 60px;
+      padding-bottom: 3px;
+      overflow-y: scroll;
+
+      & .playlist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        width: 100%;
+        & .playlist_item {
+          border-bottom: 1px solid $color_bg;
+          background: $color_theme_bg;
+          color: $color_tertiary;
+          cursor: pointer;
+          font-size: 0.8em;
+          padding: 5px 0 4px 8px;
+          @include truncateText();
+          @include sik_trans();
+
+          &.current {
+            font-size: 1em;
+            background-color: $color_bg;
+            color: $color_fg;
+          }
+
+          &:hover {
+            background-color: $color_body_bg;
+            //box-shadow: inset 0 0 10px $color_secondary;
+          }
+        }
+      }
+    }
+  }
+}

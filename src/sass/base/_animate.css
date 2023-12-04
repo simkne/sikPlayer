@@ -1,0 +1,1 @@
+.hide{animation:hideAnimation .5s cubic-bezier(0.44, 0.02, 0.91, 0.32);animation-fill-mode:forwards;transform-origin:center}@keyframes hideAnimation{from{opacity:1;transform:scale(1)}to{opacity:0;visibility:hidden;transform:scale(0)}}

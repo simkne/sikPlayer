@@ -1,0 +1,28 @@
+@mixin iconBtn($svgName: default, $w: 24) {
+  display: block;
+  width: $w + px;
+  height: $w + px;
+  background-image: url("../../pub/assets/img/icons/" + $svgName + ".svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: $color_bg;
+  text-indent: 1000px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  border-radius: $border_radius;
+  cursor: pointer;
+  transition: all 0.16s ease-in-out;
+  &:hover {
+    @include screen(large, min) {
+      filter: drop-shadow(0 0 8px rgba(88, 182, 222, 0.84));
+    }
+    scale: 1.1;
+  }
+}
+@mixin truncateText($overflow: ellipsis) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: $overflow;
+  }

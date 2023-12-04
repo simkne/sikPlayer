@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="sortofme" />
+    <meta name="description" content="audioPlayer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="css/main.min.css" rel="stylesheet" />
+
+    <title>SikPlayer demo page</title>
+
+    <!--Additional elements for browsers and robots go here goes here-->
+  </head>
+
+  <body>
+    <!--Elements visible to users go here-->
+    <div class="main">
+      <h2>SikPlayer</h2>
+
+      <div class="playlist_btns">
+        <a href="#" data-playlist="tracksArray_18211 " class="playlist_btn btn1"
+          >list1</a
+        >
+      </div>
+      <!-- beginning sikPlayer -->
+
+      <div id="sikPlayer" class="sikPlayer_wrapper slim">
+        <div class="window-controls">
+          <!--  <div id="sikPlayer_trackVisual" class="sikPlayer_trackVisual">
+            <span class="inner"></span>
+          </div> -->
+          <span class="open_btn">+</span>
+        </div>
+        <div class="container">
+          <div class="preloader"><span class="msg">loading...</span></div>
+          <div class="album_preview ajaxme">
+            <a href="#" class="prodLink ajaxme" title="view product details">
+              <div class="prodThumb"></div>
+              <div class="prodTitle">Painted Pictures & Malik Alston Trio</div>
+              <!-- <div class="prodLinks">details</div> -->
+            </a>
+          </div>
+          <div class="player_UI">
+            <div class="controls">
+              <div class="playpause">play</div>
+             <!--  <div class="volume on">vol</div> -->
+              <!--     <div class="volbox">
+                      <input id="volume" type="range" min="0" max="1" value=".8" step="0.1">
+                  </div> -->
+            </div>
+            <div class="waveForm_wrapper">
+              <div id="waveform"></div>
+            </div>
+            <div id="sikPlayer_loading" class="sikPlayer_loader hide"></div>
+            <div id="timeTracker" class="timeTracker">
+              <span class="currentTime"></span> / <span
+                class="totalLength"
+              ></span>
+            </div>
+            <!--   <div class="audioPlayer">
+              <audio src="https://assets.codepen.io/4358584/Anitek_-_Carry_On.mp3" controls loop></audio>
+              </div> -->
+          </div>
+          <div class="playlist_UI">
+            <!--             <div class="container"> -->
+            <!--    <span class="playlist_openClose-btn">+</span> -->
+
+            <ul class="playlist">
+              <li data-trackurl="#" class="playlist_item">track1 track1</li>
+              <li data-trackurl="#" class="playlist_item">track2 track2</li>
+            </ul>
+            <!--           </div> -->
+          </div>
+        </div>
+        <!-- end .container -->
+      </div>
+      <!-- end #sikPlayer -->
+    </div>
+    <!-- end main -->
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+    <script src="js/vendor/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="js/main.min.js"></script>
+    <script>
+      var tracksArray_18211 = {
+        tracks:
+          '["\\\/projs\\\/msr\\\/wp-content\\\/uploads\\\/2023\\\/03\\\/ABRA_-_NeedsumbodyMp3Converter.net_.mp3","\\\/projs\\\/msr\\\/wp-content\\\/uploads\\\/2023\\\/03\\\/Apollo_Brown_-_Choices_Instrumental-Vubey.mp3","\\\/projs\\\/msr\\\/wp-content\\\/uploads\\\/2023\\\/03\\\/Apollo_Brown_-_Lonely_Cold_Instrumental-Vubey.mp3","\\\/projs\\\/msr\\\/wp-content\\\/uploads\\\/2023\\\/03\\\/10-Rainy-Souls-Gloomy-Futures.mp3"]',
+        trackTitles:
+          '["ABRA_-_Needsumbody[Mp3Converter.net]","Apollo_Brown_-_Choices_Instrumental-Vubey","Apollo Brown &#8211; Lonely Cold Instrumental-Vubey","Rainy Souls, Gloomy Futures"]',
+        plink:
+          '"http:\\\/\\\/localhost:8080\\\/projs\\\/msr\\\/index.php\\\/product\\\/painted-pictures-malik-alston-trio\\\/"',
+        prodID: "18211",
+        prodThumb:
+          '["http:\\\/\\\/localhost:8080\\\/projs\\\/msr\\\/wp-content\\\/uploads\\\/2023\\\/03\\\/MSR19_cover_05_crop-scaled.jpg",150,150,false]',
+        prodTitle: '"Painted Pictures &#038; Malik Alston Trio"',
+      };
+    </script>
+  </body>
+</html>

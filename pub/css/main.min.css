@@ -1,0 +1,325 @@
+/*!*************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/main.scss ***!
+  \*************************************************************************************************************/
+/** 
+usage:  	
+ @include screen(large, min) {
+ @include screen(custom, max, 400) {
+*/
+.hide {
+  animation: hideAnimation 0.5s cubic-bezier(0.44, 0.02, 0.91, 0.32);
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}
+
+@keyframes hideAnimation {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+  }
+}
+body {
+  background-color: #062735;
+  font-family: "Helvetica", "Arial", sans-serif;
+  color: #d1d1d1;
+  font-size: 16px;
+}
+
+.playlist_btns {
+  padding: 1rem;
+  background-color: #197499;
+  margin-bottom: 3rem;
+}
+
+.sikPlayer_wrapper {
+  width: 420px;
+  height: 240px;
+  background: #171717;
+  border: 3px solid #00212b;
+  border-radius: 6px;
+  position: fixed;
+  bottom: 0.5rem;
+  color: #d1d1d1;
+  filter: drop-shadow(0px -10px 14px rgba(68, 160, 221, 0.206));
+  transition: all 0.44s cubic-bezier(0.59, 0.09, 0.28, 1.07);
+}
+.sikPlayer_wrapper.slim {
+  width: 320px;
+  height: 240px;
+}
+.sikPlayer_wrapper.closed {
+  bottom: -245px;
+}
+.sikPlayer_wrapper.closed.paused .controls .playpause, .sikPlayer_wrapper.closed.playing .controls .playpause {
+  position: absolute;
+  top: -150px;
+  left: 3rem;
+  visibility: visible;
+  z-index: 7;
+  background-color: #171717 !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+.sikPlayer_wrapper .window-controls {
+  position: absolute;
+  top: -2rem;
+  left: 1rem;
+  padding: 2px;
+}
+.sikPlayer_wrapper .window-controls .open_btn {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url(../.././pub/assets/img/nav-arrow-down.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #171717;
+  text-indent: 1000px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.16s ease-in-out;
+}
+.sikPlayer_wrapper .window-controls .open_btn:hover {
+  scale: 1.1;
+}
+@media screen and (min-width: 1175px) {
+  .sikPlayer_wrapper .window-controls .open_btn:hover {
+    filter: drop-shadow(0 0 8px rgba(88, 182, 222, 0.84));
+  }
+}
+.sikPlayer_wrapper .window-controls .open_btn.closed {
+  background-image: url(../.././pub/assets/img/nav-arrow-up.svg);
+}
+.sikPlayer_wrapper .container {
+  background: #171717;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 6px;
+}
+.sikPlayer_wrapper .container .preloader {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
+  background: rgba(0, 33, 43, 0.6196078431);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+.sikPlayer_wrapper .container .preloader .msg {
+  pointer-events: none;
+  width: fit-content;
+}
+.sikPlayer_wrapper .container .album_preview {
+  width: 100%;
+  height: 120px;
+  position: relative;
+}
+.sikPlayer_wrapper .container .album_preview .prodThumb {
+  width: 100%;
+  height: 150%;
+  position: absolute;
+  z-index: 0;
+  background-image: url(../.././pub/assets/img/cover_default.png);
+  background-size: 100%;
+  background-position: top center;
+  transition: "background-size" 0.44s cubic-bezier(0.59, 0.09, 0.28, 1.07);
+  animation: panin 1s cubic-bezier(0.59, 0.09, 0.28, 1.07);
+  animation-fill-mode: forwards;
+}
+.sikPlayer_wrapper .container .album_preview .prodTitle {
+  position: absolute;
+  width: 98%;
+  top: 0;
+  font-size: 1.1rem;
+  color: #d1d1d1;
+  background-color: rgba(23, 23, 23, 0.7254901961);
+  background: linear-gradient(0deg, rgba(34, 144, 195, 0) 0%, rgba(2, 46, 66, 0.9) 46%, rgb(0, 33, 43) 100%);
+  padding-left: 7px;
+  transition: background-color 0.44s cubic-bezier(0.59, 0.09, 0.28, 1.07);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sikPlayer_wrapper .container .album_preview:hover .prodThumb {
+  animation: panout 1.5s cubic-bezier(0.59, 0.09, 0.28, 1.07);
+  animation-fill-mode: forwards;
+}
+.sikPlayer_wrapper .container .album_preview:hover .prodTitle {
+  background-color: rgba(23, 23, 23, 0.3607843137);
+  background-blend-mode: darken;
+}
+@keyframes panout {
+  0% {
+    background-size: 100%;
+  }
+  100% {
+    background-size: 110%;
+  }
+}
+@keyframes panin {
+  0% {
+    background-size: 110%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+.sikPlayer_wrapper .container .player_UI {
+  position: relative;
+  background-color: #00212b;
+  background: linear-gradient(180deg, rgba(34, 144, 195, 0) 0%, rgba(9, 36, 48, 0.89) 76%, #171717 100%);
+}
+.sikPlayer_wrapper .container .player_UI .controls {
+  height: 60px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  z-index: 9;
+}
+.sikPlayer_wrapper .container .player_UI .controls .playpause {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url(../.././pub/assets/img/play.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #171717;
+  text-indent: 1000px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.16s ease-in-out;
+  background-color: transparent;
+  width: 36px;
+  height: 36px;
+  background-size: 87%;
+}
+.sikPlayer_wrapper .container .player_UI .controls .playpause:hover {
+  scale: 1.1;
+}
+@media screen and (min-width: 1175px) {
+  .sikPlayer_wrapper .container .player_UI .controls .playpause:hover {
+    filter: drop-shadow(0 0 8px rgba(88, 182, 222, 0.84));
+  }
+}
+.sikPlayer_wrapper .container .player_UI .controls .playpause.pause {
+  background-image: url(../.././pub/assets/img/pause.svg);
+}
+.sikPlayer_wrapper .container .player_UI .controls .volume {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url(../.././pub/assets/img/sound-high.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #171717;
+  text-indent: 1000px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.16s ease-in-out;
+  background-size: 84%;
+}
+.sikPlayer_wrapper .container .player_UI .controls .volume:hover {
+  scale: 1.1;
+}
+@media screen and (min-width: 1175px) {
+  .sikPlayer_wrapper .container .player_UI .controls .volume:hover {
+    filter: drop-shadow(0 0 8px rgba(88, 182, 222, 0.84));
+  }
+}
+.sikPlayer_wrapper .container .player_UI .controls .volume.mute, .sikPlayer_wrapper .container .player_UI .controls .volume.off {
+  background-image: url(../.././pub/assets/img/sound-off.svg);
+}
+.sikPlayer_wrapper .container .player_UI .waveForm_wrapper {
+  height: 60px;
+  width: 87%;
+  margin-left: 2.2rem;
+}
+.sikPlayer_wrapper .container .player_UI .waveForm_wrapper #waveform {
+  height: 100%;
+  padding-top: 8px;
+}
+.sikPlayer_wrapper .container .player_UI .waveForm_wrapper #waveform wave {
+  cursor: ew-resize !important;
+}
+.sikPlayer_wrapper .container .player_UI .sikPlayer_loader {
+  font-size: 38px;
+  color: #d1d1d1;
+  font-weight: 800;
+  width: 75px;
+  height: 50px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 4px;
+  left: 42%;
+  z-index: 3;
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.44s cubic-bezier(0.59, 0.09, 0.28, 1.07);
+}
+.sikPlayer_wrapper .container .player_UI .timeTracker {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.7rem;
+  line-height: 0.9rem;
+  opacity: 0.8;
+  color: #348cb0;
+  pointer-events: none;
+}
+.sikPlayer_wrapper .container .playlist_UI {
+  border: 1px solid #171717;
+  position: relative;
+  height: 60px;
+  padding-bottom: 3px;
+  overflow-y: scroll;
+}
+.sikPlayer_wrapper .container .playlist_UI .playlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.sikPlayer_wrapper .container .playlist_UI .playlist .playlist_item {
+  border-bottom: 1px solid #171717;
+  background: #00212b;
+  color: #348cb0;
+  cursor: pointer;
+  font-size: 0.8em;
+  padding: 5px 0 4px 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: all 0.44s cubic-bezier(0.59, 0.09, 0.28, 1.07);
+}
+.sikPlayer_wrapper .container .playlist_UI .playlist .playlist_item.current {
+  font-size: 1em;
+  background-color: #171717;
+  color: #d1d1d1;
+}
+.sikPlayer_wrapper .container .playlist_UI .playlist .playlist_item:hover {
+  background-color: #062735;
+}

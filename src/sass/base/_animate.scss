@@ -1,0 +1,25 @@
+//mixins
+@mixin sik_trans($attr: all) {
+  //transition: $attr 0.44s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: $attr 0.44s cubic-bezier(.59,.09,.28,1.07);
+  //  transition-timing-function: cubic-bezier(.17,.67,.83,.67);cubic-bezier(1,.02,.91,.32)
+  //transition-duration: .44s;  
+}
+
+.hide {
+  animation: hideAnimation 0.5s cubic-bezier(.44,.02,.91,.32);
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}
+
+@keyframes hideAnimation {
+  from {
+    opacity: 1;
+    transform: scale(1);
+}
+to {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+  }
+}
