@@ -2,10 +2,10 @@
   display: block;
   width: $w + px;
   height: $w + px;
-  background-image: url("../../pub/assets/img/icons/" + $svgName + ".svg");
+  background-image: url("../img/icons/" + $svgName + ".svg");
   background-size: 100%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center;  
   background-color: $color_bg;
   text-indent: 1000px;
   white-space: nowrap;

@@ -40,7 +40,7 @@
   & .open_btn {
     @include iconBtn("nav-arrow-down");
     &.closed {
-      background-image: url("../../pub/assets/img/nav-arrow-up.svg");
+      background-image: url("../img/icons/nav-arrow-up.svg");
       // @include iconLink("nav-arrow-down");
     }
   }
@@ -65,7 +65,7 @@
       & .msg {
         pointer-events: none;
         width: fit-content;
-        background-image: url("../../pub/assets/img/simoebius.svg");
+        background-image: url("../img/icons/simoebius.svg");
         pointer-events: none;
         width: 80%;
         text-align: center;
@@ -88,7 +88,7 @@
         height: 150%;
         position: absolute;
         z-index: 0;
-        background-image: url("../../pub/assets/img/cover_default.png");
+        background-image: url("../img/cover_default.png");
         background-size: 100%;
         background-position: top center;
         background-blend-mode: unset;
@@ -216,7 +216,7 @@
           height: 36px;
           background-size: 87%;
           &.pause {
-            background-image: url("../../pub/assets/img/icons/pause.svg");
+            background-image: url("../img/icons/pause.svg");
           }
         }
         & .volume {
@@ -225,7 +225,7 @@
           background-size: 84%;
           &.mute,
           &.off {
-            background-image: url("../../pub/assets/img/icons/sound-off.svg");
+            background-image: url("../img/icons/sound-off.svg");
           }
         }
       }
